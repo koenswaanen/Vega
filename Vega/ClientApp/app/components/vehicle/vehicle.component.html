@@ -1,0 +1,64 @@
+﻿<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 vehicle-container" style="display:flex; flex-direction:column">
+    <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()" novalidate class="vehicle-container">
+        <div style="margin-bottom: 1em">
+            <button type="submit"
+                    [disabled]="vehicleForm.pristine || !vehicleForm.valid" class="btn btn-success">
+                Save
+            </button>
+        </div>
+
+        <mat-form-field>
+            <mat-select placeholder="Make" formControlName="make">
+                <mat-option *ngFor="let make of makes" [value]="make.makeId">
+                    {{make.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Modal" formControlName="model">
+                <mat-option *ngFor="let model of models | async" [value]="model.modelId">
+                    {{model.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div>
+            <label>Registered: </label>
+            <mat-radio-group formControlName="registered">
+                <mat-radio-button value="true">Yes</mat-radio-button>
+                <mat-radio-button value="false">No</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="form-group">
+            <label class="center-block">
+                Features:
+                <!--<label class="checkbox-inline" *ngFor="let feature of features">
+                    <input type="checkbox" value="{{feature.featureId}}" (change)="onCheckChange($event)" />
+                    {{feature.name}}
+                </label>-->
+                <span *ngFor="let feature of features" >
+                    <mat-checkbox [value]="feature.featureId" (change)="onCheckChange($event)">{{feature.name}}</mat-checkbox>
+                </span>                
+            </label>
+        </div>
+
+        <mat-form-field>
+            <input matInput placeholder="Contact name" formControlName="contactName">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Contact phone" formControlName="contactPhone">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Contact email" formControlName="contactEmail">
+        </mat-form-field>
+
+    </form>
+
+    <p>Form value: {{ vehicleForm.value | json}}</p>
+    <p>Form status: {{ vehicleForm.status | json }}</p>
+
+</div>

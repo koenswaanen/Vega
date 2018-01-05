@@ -24,12 +24,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\components\vehicle\vehicle.component.ts" />
+    <None Remove="ClientApp\app\models\feature.ts" />
+    <None Remove="ClientApp\app\models\make.ts" />
+    <None Remove="ClientApp\app\models\Model.ts" />
+    <None Remove="ClientApp\app\services\make.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Data.Context\Data.Context.csproj" />
     <ProjectReference Include="..\Models.Dto\Models.Dto.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Extensions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\vehicle\vehicle.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\feature.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\make.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\make.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
